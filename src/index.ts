@@ -2,6 +2,7 @@ import mojo, { MojoApp, yamlConfigPlugin } from '@mojojs/core';
 
 import { Database } from './models/database.js';
 import { Users } from './models/users.js';
+import { Recipes } from './models/recipes.js';
 
 import fs from 'fs';
 
@@ -16,12 +17,16 @@ app.secrets = app.config.secrets;
 
 
 // model registration
+console.log(app.config.database);
 
 app.models.database = new Database(app.config.database);
 app.models.users = new Users(app.config.salt);
+app.models.recipes = new Recipes();
 
 // Routing
-app.get('/').to('example#welcome');
+app.get('/').to({controller: 'example', action: 'recipes'});
+// app.get('/recipes').to({controller: 'example', action: 'recipes'});
+// app.get('/users').to({controller: 'example', action: 'users'});
 
 
 
