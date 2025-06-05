@@ -6,14 +6,23 @@ export default async function initDev(app: MojoApp, args: string[]) {
 
         // Create tables if needed
         await app.models.users.init(connection)
+        await app.models.recipes.init(connection) // 新增，创建 recipes 表
 
         // Allow for an alternative source of cats
         const csvPath = args.length > 1 ? args[1] : "test_data/users.csv";
         console.info("Importing users from", csvPath);
         await app.models.users.loadUsersFromCsv(connection, csvPath);
 
+        // 导入 recipes
+        const recipesJsonPath = "test_data/recipes.json";
+        console.info("Importing recipes from", recipesJsonPath);
+        await app.models.recipes.loadRecipesFromJson(connection, recipesJsonPath);
+
         const users = await app.models.users.listUsers(connection);
         console.table(users);
+
+        const recipes = await app.models.recipes.listRecipes(connection);
+        console.table(recipes);
 
         console.info("Initialisation of development environment complete.")
     });
