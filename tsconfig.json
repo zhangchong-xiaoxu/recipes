@@ -5,17 +5,18 @@
       "DOM"
     ],
     "target": "ES2022",
-    "module": "ES2022",
+    "module": "NodeNext",
     "sourceMap": true,
     "declaration": true,
     "incremental": true,
-    "moduleResolution": "node10",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "noErrorTruncation": true,
     "strict": true,
     "outDir": "lib",
     "rootDir": "src",
-    "composite": true
+    "composite": true,
+    "skipLibCheck": true
   },
   "include": [
     "src/**/*"

@@ -15,6 +15,8 @@ export const app: MojoApp = mojo();
 app.plugin(yamlConfigPlugin);
 app.secrets = app.config.secrets;
 
+// 配置静态文件服务
+app.static.publicPaths.push('public');
 
 // model registration
 console.log(app.config.database);
@@ -27,8 +29,6 @@ app.models.recipes = new Recipes();
 app.get('/').to({controller: 'example', action: 'recipes'});
 // app.get('/recipes').to({controller: 'example', action: 'recipes'});
 // app.get('/users').to({controller: 'example', action: 'users'});
-
-
 
 app.start();
 

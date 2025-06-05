@@ -10,7 +10,7 @@ export interface Recipe {
   category: string;
   difficulty: string;
   tags: string[];
-  created_at: string;
+  created_at?: string;
 }
 
 export class Recipes {
@@ -33,13 +33,13 @@ export class Recipes {
       CREATE TABLE IF NOT EXISTS recipes (
         recipe_id INTEGER DEFAULT nextval('recipe_id_seq') PRIMARY KEY,
         title VARCHAR NOT NULL,
-        ingredients VARCHAR NOT NULL,
-        steps VARCHAR NOT NULL,
+        ingredients JSON NOT NULL,
+        steps JSON NOT NULL,
         time VARCHAR NOT NULL,
         category VARCHAR NOT NULL,
         difficulty VARCHAR NOT NULL,
-        tags VARCHAR NOT NULL,
-        created_at TIMESTAMP
+        tags JSON NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
   }
@@ -60,7 +60,7 @@ export class Recipes {
       if (!Array.isArray(recipes)) {
         throw new Error('JSON is not an array');
       }
-    } catch (e) {
+    } catch {
       throw new Error('Invalid JSON file');
     }
 
@@ -68,7 +68,7 @@ export class Recipes {
       await connection.run(
         `INSERT INTO recipes 
           (title, ingredients, steps, time, category, difficulty, tags, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+         VALUES (?, ?::JSON, ?::JSON, ?, ?, ?, ?::JSON, COALESCE(?, CURRENT_TIMESTAMP))`,
         [
           recipe.title,
           JSON.stringify(recipe.ingredients),
@@ -77,7 +77,7 @@ export class Recipes {
           recipe.category,
           recipe.difficulty,
           JSON.stringify(recipe.tags),
-          recipe.created_at
+          recipe.created_at || null
         ]
       );
     }
