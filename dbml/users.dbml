@@ -18,5 +18,17 @@ table hub_memberships {
     hub_id INTEGER
 }
 
+table recipes {
+    recipe_id INTEGER [primary key]
+    title VARCHAR [NOT NULL]
+    ingredients TEXT [NOT NULL] // JSON array string
+    steps TEXT [NOT NULL] // JSON array string
+    time VARCHAR [NOT NULL]
+    category VARCHAR [NOT NULL]
+    difficulty VARCHAR [NOT NULL]
+    tags TEXT [NOT NULL] // JSON array string
+    created_at TIMESTAMP [default: `CURRENT_TIMESTAMP`]
+}
+
 ref: hub_memberships.hub_id > hubs.hub_id
 ref: hub_memberships.user_id > users.user_id
