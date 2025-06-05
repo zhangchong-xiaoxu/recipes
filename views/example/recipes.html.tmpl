@@ -28,7 +28,12 @@
             Top1: <%= top3[0].title %>
           </div>
           <a href="/recipes/<%= top3[0].recipe_id %>" target="_blank" style="display: block; width: 120px; height: 120px; border-radius: 12px; overflow: hidden;">
-            <img src="/public/images/recipes/default.jpg" alt="Recipe <%= top3[0].title %>" style="width: 100%; height: 100%; object-fit: cover;" />
+            <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="10" width="100" height="100" rx="18" fill="#E3ECF7" stroke="#365FA0" stroke-width="3"/>
+              <circle cx="60" cy="55" r="28" fill="#B6D0F7" stroke="#365FA0" stroke-width="2"/>
+              <rect x="40" y="80" width="40" height="12" rx="6" fill="#365FA0" opacity="0.7"/>
+              <text x="60" y="60" text-anchor="middle" dy=".35em" font-size="18" fill="#365FA0" font-family="Arial, sans-serif">菜谱</text>
+            </svg>
           </a>
         </div>
       % }
@@ -36,18 +41,32 @@
       <div style="display: flex; gap: 1rem; margin-top: 0.2rem;">
         % if (top3[1]) {
           <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="font-size: 1.2rem; font-weight: bold; color: #365FA0; margin-bottom: 0.7rem; font-family: 'Russo One', 'Arial Black', sans-serif;">
+            Top2: <%= top3[1].title %>
+          </div>
             <a href="/recipes/<%= top3[1].recipe_id %>" target="_blank" style="display: block; width: 70px; height: 70px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px #0001;">
-              <img src="/public/images/recipes/default.jpg" alt="Recipe <%= top3[1].title %>" style="width: 100%; height: 100%; object-fit: cover;" />
+              <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="60" height="60" rx="10" fill="#E3ECF7" stroke="#365FA0" stroke-width="2"/>
+                <circle cx="35" cy="32" r="16" fill="#B6D0F7" stroke="#365FA0" stroke-width="1.5"/>
+                <rect x="23" y="47" width="24" height="7" rx="3.5" fill="#365FA0" opacity="0.7"/>
+                <text x="35" y="35" text-anchor="middle" dy=".35em" font-size="10" fill="#365FA0" font-family="Arial, sans-serif"><%= top3[1].title %></text>
+              </svg>
             </a>
-            <span style="font-size: 0.95rem; color: #365FA0; font-weight: bold;">Top 2</span>
           </div>
         % }
         % if (top3[2]) {
           <div style="display: flex; flex-direction: column; align-items: center;">
+          <div style="font-size: 1.2rem; font-weight: bold; color: #365FA0; margin-bottom: 0.7rem; font-family: 'Russo One', 'Arial Black', sans-serif;">
+            Top3: <%= top3[2].title %>
+          </div>
             <a href="/recipes/<%= top3[2].recipe_id %>" target="_blank" style="display: block; width: 70px; height: 70px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px #0001;">
-              <img src="/public/images/recipes/default.jpg" alt="Recipe <%= top3[2].title %>" style="width: 100%; height: 100%; object-fit: cover;" />
+              <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="5" width="60" height="60" rx="10" fill="#E3ECF7" stroke="#365FA0" stroke-width="2"/>
+                <circle cx="35" cy="32" r="16" fill="#B6D0F7" stroke="#365FA0" stroke-width="1.5"/>
+                <rect x="23" y="47" width="24" height="7" rx="3.5" fill="#365FA0" opacity="0.7"/>
+                <text x="35" y="35" text-anchor="middle" dy=".35em" font-size="10" fill="#365FA0" font-family="Arial, sans-serif"><%= top3[2].title %></text>
+              </svg>
             </a>
-            <span style="font-size: 0.95rem; color: #365FA0; font-weight: bold;">Top 3</span>
           </div>
         % }
       </div>
@@ -60,7 +79,12 @@
       % const recent6 = ctx.stash.recipes.slice(0, 6);
       % for (const recipe of recent6) {
         <a href="/recipes/<%= recipe.recipe_id %>" target="_blank" style="display: block; width: 100%; height: 100px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px #0001;">
-          <img src="/public/images/recipes/default.jpg" alt="Recipe <%= recipe.title %>" style="width: 100%; height: 100%; object-fit: cover;" />
+          <svg width="100%" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="5" width="90" height="90" rx="12" fill="#E3ECF7" stroke="#365FA0" stroke-width="2"/>
+            <circle cx="50" cy="45" r="20" fill="#B6D0F7" stroke="#365FA0" stroke-width="1.5"/>
+            <rect x="35" y="70" width="30" height="8" rx="4" fill="#365FA0" opacity="0.7"/>
+            <text x="50" y="48" text-anchor="middle" dy=".35em" font-size="12" fill="#365FA0" font-family="Arial, sans-serif"><%= recipe.title %></text>
+          </svg>
         </a>
       % }
     </div>

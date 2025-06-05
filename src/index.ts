@@ -16,7 +16,8 @@ app.plugin(yamlConfigPlugin);
 app.secrets = app.config.secrets;
 
 // 配置静态文件服务
-app.static.publicPaths.push('public');
+app.static.publicPaths = ['public'];
+app.log.level = 'debug';  // 启用调试日志
 
 // model registration
 console.log(app.config.database);

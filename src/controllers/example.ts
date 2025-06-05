@@ -1,11 +1,12 @@
-import { DuckDBConnection, DuckDBInstance } from '@duckdb/node-api';
+import { DuckDBConnection } from '@duckdb/node-api';
 import type { MojoContext } from '@mojojs/core';
+import { Recipe } from '../models/recipes.js';
 
 export default class Controller {
   // Render template "example/welcome.html.tmpl" with message
   async recipes(ctx: MojoContext): Promise<void> {
     console.log('Loading recipes...');
-    let recipes: any[] = [];
+    let recipes: Recipe[] = [];
     await ctx.app.models.database.connection(async (connection: DuckDBConnection) => {
       recipes = await ctx.app.models.recipes.listRecipes(connection);
     });
@@ -14,5 +15,10 @@ export default class Controller {
     ctx.stash.recipes = recipes;
     ctx.stash.title = 'Recipes List';
     await ctx.render({ view: 'example/recipes' });
+  }
+
+  async index(ctx: MojoContext): Promise<void> {
+    const imagePath = '/images/dynamic-image.jpg';
+    await ctx.render({ imagePath });
   }
 }
