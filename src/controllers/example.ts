@@ -17,8 +17,10 @@ export default class Controller {
     await ctx.render({ view: 'example/recipes' });
   }
 
-  async index(ctx: MojoContext): Promise<void> {
-    const imagePath = '/images/dynamic-image.jpg';
-    await ctx.render({ imagePath });
+  async recipe(ctx: MojoContext): Promise<void> {
+    const id = ctx.stash.id;
+    const recipe = await ctx.app.models.recipes.findById(id);
+    ctx.stash.recipe = recipe;
+    await ctx.render({ view: 'example/recipe' });
   }
 }

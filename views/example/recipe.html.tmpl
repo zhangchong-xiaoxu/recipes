@@ -1,0 +1,113 @@
+% view.layout = 'default';
+% ctx.stash.title = "Recipe Details"
+<div style="background-color: #FAF3F0; min-height: 100vh; padding: 2rem;">
+  <!-- Logo -->
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <h1 style="font-family: 'Russo One', sans-serif; font-size: 2.5rem; color: #8B0000; margin: 0;">BlaBites</h1>
+  </div>
+
+  <!-- Recipe Card -->
+  <div style="max-width: 1000px; margin: 0 auto; background: white; border: 2px solid #8B0000; border-radius: 16px; padding: 2rem;">
+    <div style="display: flex; gap: 2rem;">
+      <!-- Left: Recipe Image -->
+      <div style="flex: 1; min-width: 300px;">
+        <div style="width: 100%; padding-bottom: 100%; background: #F5E6E6; border-radius: 8px; position: relative;">
+        </div>
+      </div>
+
+      <!-- Right: Recipe Info -->
+      <div style="flex: 2; min-width: 0;">
+        <!-- Title and Meta -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+          <div>
+            <h2 style="font-family: 'Russo One', sans-serif; font-size: 2rem; color: #8B0000; margin: 0;"><%= ctx.stash.recipe?.title || 'Pad Thai' %></h2>
+            <div style="display: inline-block; background: #8B0000; color: white; padding: 0.2rem 0.8rem; border-radius: 12px; font-size: 0.9rem; margin-top: 0.5rem;">Thailand</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-family: 'Russo One', sans-serif; color: #2d2d2d;"><%= ctx.stash.recipe?.author || 'Chloe Lee' %></div>
+            <div style="color: #FF4444; margin-top: 0.3rem;">
+              <span style="margin-right: 0.3rem;">❤</span>
+              <span><%= ctx.stash.recipe?.likes || '23' %> Likes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p style="color: #666; line-height: 1.6; margin-bottom: 2rem;">
+          <%= ctx.stash.recipe?.description || 'Get a taste of Asia south-west with every bite of this easy pad Thai recipe. Making pad Thai at home might just be simpler than you\'d expect, and this pad Thai recipe has all the hallmarks of a restaurant-quality dish. If you\'re cooking, it really is an amazing recipe - be it a weeknight delight or a dinner party pleaser.' %>
+        </p>
+
+        <!-- Two Columns: Ingredients & Recipe -->
+        <div style="display: flex; gap: 2rem;">
+          <!-- Ingredients -->
+          <div style="flex: 1; min-width: 200px;">
+            <h3 style="font-family: 'Russo One', sans-serif; color: #8B0000; margin: 0 0 1rem 0;">Ingredients</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #444;">
+              <li style="margin-bottom: 0.5rem;">• 250g packet rice stick noodles</li>
+              <li style="margin-bottom: 0.5rem;">• 2 tbsp lime juice</li>
+              <li style="margin-bottom: 0.5rem;">• 2 tbsp fish sauce</li>
+              <li style="margin-bottom: 0.5rem;">• 2 tbsp brown sugar</li>
+              <li style="margin-bottom: 0.5rem;">• 2 tbsp peanut oil</li>
+              <li style="margin-bottom: 0.5rem;">• 2 chicken breast fillets, thinly sliced</li>
+              <li style="margin-bottom: 0.5rem;">• 200g green prawns, peeled, deveined</li>
+              <li style="margin-bottom: 0.5rem;">• 3 green onions, thinly sliced diagonally</li>
+              <li style="margin-bottom: 0.5rem;">• 2 small red chillies, deseeded, finely chopped</li>
+              <li style="margin-bottom: 0.5rem;">• 2 large Australian Free Range Eggs, lightly beaten</li>
+              <li style="margin-bottom: 0.5rem;">• 1 cup bean sprouts, tails removed</li>
+              <li style="margin-bottom: 0.5rem;">• 1/4 cup roasted peanuts, finely chopped (optional)</li>
+              <li style="margin-bottom: 0.5rem;">• 1/2 cup coriander leaves</li>
+              <li style="margin-bottom: 0.5rem;">• lime wedges to serve</li>
+            </ul>
+          </div>
+
+          <!-- Recipe Steps -->
+          <div style="flex: 1.5;">
+            <h3 style="font-family: 'Russo One', sans-serif; color: #8B0000; margin: 0 0 1rem 0;">Recipe</h3>
+            <div style="color: #444;">
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: bold; margin-bottom: 0.5rem;">Step 1</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.3rem;">• Place noodles into a heat-proof bowl. Cover with hot water.</li>
+                  <li style="margin-bottom: 0.3rem;">• Stand until tender.</li>
+                  <li style="margin-bottom: 0.3rem;">• Drain. Rinse under cold water.</li>
+                </ul>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: bold; margin-bottom: 0.5rem;">Step 2</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.3rem;">• Combine lime juice, fish sauce and sugar in a jug.</li>
+                  <li style="margin-bottom: 0.3rem;">• Whisk with a fork to combine.</li>
+                </ul>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: bold; margin-bottom: 0.5rem;">Step 3</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.3rem;">• Heat a wok over high heat. Add oil. Swirl to coat.</li>
+                  <li style="margin-bottom: 0.3rem;">• Add chicken. Stir-fry for 2 minutes until golden.</li>
+                  <li style="margin-bottom: 0.3rem;">• Add prawns, onions and chillies. Stir-fry for 2 minutes or until prawns turn pink. Add noodles. Stir-fry for 2 minutes.</li>
+                </ul>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: bold; margin-bottom: 0.5rem;">Step 4</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.3rem;">• Add lime juice mixture to wok. Toss to combine. Slowly pour eggs over noodles. Stir-fry for 1 minute. Add sprouts.</li>
+                  <li style="margin-bottom: 0.3rem;">• Toss well.</li>
+                </ul>
+              </div>
+
+              <div>
+                <div style="font-weight: bold; margin-bottom: 0.5rem;">Step 5</div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                  <li style="margin-bottom: 0.3rem;">• Spoon pad Thai onto plates. Sprinkle with peanuts and coriander leaves. Serve with lime wedges.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

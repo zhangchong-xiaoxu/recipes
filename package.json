@@ -44,6 +44,6 @@
     "lint:ts:fix": "eslint --fix",
     "lint:all": "npm-run-all --continue-on-error lint:ts lint:css",
     "lint:all:fix": "npm-run-all --continue-on-error lint:ts:fix lint:css:fix",
-    "duckdb:ui": "npm run build && node lib/index.js duckui"
+    "duckdb:ui": "node lib/index.js duckui"
   }
 }

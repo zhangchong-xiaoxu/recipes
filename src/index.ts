@@ -28,8 +28,7 @@ app.models.recipes = new Recipes();
 
 // Routing
 app.get('/').to({controller: 'example', action: 'recipes'});
-// app.get('/recipes').to({controller: 'example', action: 'recipes'});
-// app.get('/users').to({controller: 'example', action: 'users'});
+app.get('/recipes/:id').to({controller: 'example', action: 'recipe'});
 
 app.start();
 
