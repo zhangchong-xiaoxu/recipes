@@ -19,7 +19,13 @@ export default class Controller {
 
   async recipe(ctx: MojoContext): Promise<void> {
     const id = ctx.stash.id;
-    const recipe = await ctx.app.models.recipes.findById(id);
+    let recipes: Recipe[] = [];
+    await ctx.app.models.database.connection(async (connection: DuckDBConnection) => {
+      recipes = await ctx.app.models.recipes.listRecipes(connection);
+    });
+    let recipe = recipes.find(r => r.recipe_id == id);
+    console.log(`Recipe info: ${JSON.stringify(recipe, (_, v) => typeof v === 'bigint' ? v.toString() : v)}`);
+
     ctx.stash.recipe = recipe;
     await ctx.render({ view: 'example/recipe' });
   }
