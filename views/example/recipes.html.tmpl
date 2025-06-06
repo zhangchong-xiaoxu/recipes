@@ -4,7 +4,7 @@
 
   <!-- Header -->
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-    <div style="width: 300px; height: 100px; background: #ddd; border-radius: 8px;">
+    <div style="width: 300px; height: 100px; border-radius: 8px;">
       <svg>
         <text x="20%" y="50%" dy=".35em" text-anchor="middle" style="font-family: 'Russo One', 'Courier New', Courier, monospace; font-size: 48px; fill: #365FA0;">Bla + Bla</text>
       </svg>
@@ -16,12 +16,12 @@
     <div style="width: 60px;"></div> <!-- 占位 -->
   </div>
 
-  <!-- Two-Column Layout: Recipes of the Month | Recent Recipes -->
-  <div style="display: flex; gap: 2rem;">
+  <!-- Two-Column Layout -->
+  <div style="display: flex; gap: 2rem; align-items: stretch;">
 
     <!-- Left: Recipes of the Month -->
-    <div style="flex: 1;">
-      <h2 style="color: #8B0000; font-family: 'Russo One', sans-serif;">Recipes of the Month</h2>
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+      <h3 style="color: #8B0000; font-family: 'Russo One', sans-serif;">Recipes of the Month</h3>
 
       <!-- Top 1 -->
       <a href="/recipes/<%= ctx.stash.recipes[0].recipe_id %>" target="_blank" style="text-decoration: none;">
@@ -45,15 +45,17 @@
     </div>
 
     <!-- Right: Recent Recipes -->
-    <div style="flex: 2;">
-      <h2 style="color: #8B0000; font-family: 'Russo One', sans-serif;">Recent Recipes</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1.2rem;">
-        % for (const recipe of ctx.stash.recipes.slice(0,6) || []) {
-          <div style="border: 2px solid #8B0000; border-radius: 12px; padding: 0.8rem; background: #FDF0E6;">
-            <h4 style="color: #8B0000; margin-top: 0;"><%= recipe.title %></h4>
-            <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
-          </div>
-        % }
+    <div style="flex: 2; display: flex; flex-direction: column;">
+      <h3 style="color: #8B0000; font-family: 'Russo One', sans-serif;">Recent Recipes</h3>
+      <div style="flex-grow: 1;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.2rem; height: 100%;">
+          % for (const recipe of ctx.stash.recipes.slice(0,6) || []) {
+            <div style="border: 2px solid #8B0000; border-radius: 12px; padding: 0.8rem; background: #FDF0E6; display: flex; flex-direction: column; justify-content: space-between;">
+              <h4 style="color: #8B0000; margin-top: 0;"><%= recipe.title %></h4>
+              <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
+            </div>
+          % }
+        </div>
       </div>
     </div>
   </div>
