@@ -24,7 +24,7 @@
       <h3 style="color: #8B0000; font-family: 'Russo One', sans-serif;">Recipes of the Month</h3>
 
       <!-- Top 1 -->
-      <a href="/recipes/<%= ctx.stash.recipes[0].recipe_id %>" target="_blank" style="text-decoration: none;">
+      <a href="/recipes/<%= ctx.stash.recipes[0].recipe_id %>" target="_self" style="text-decoration: none;">
         <div style="border: 2px solid #8B0000; border-radius: 12px; padding: 0.8rem; margin-bottom: 1rem;">
           <h3 style="margin-top: 0; color: #8B0000;">Top 1 <%= ctx.stash.recipes[0].title %></h3>
           <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
@@ -33,14 +33,18 @@
 
       <!-- Top 2 & 3 -->
       <div style="display: flex; gap: 1rem;">
-        <div style="flex: 1; border: 2px solid #8B0000; border-radius: 12px; padding: 0.5rem;">
-          <h4 style="color: #8B0000; margin: 0 0 0.3rem 0;">Top 2 <%= ctx.stash.recipes[1].title %></h4>
-          <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
-        </div>
-        <div style="flex: 1; border: 2px solid #8B0000; border-radius: 12px; padding: 0.5rem;">
-          <h4 style="color: #8B0000; margin: 0 0 0.3rem 0;">Top 3 <%= ctx.stash.recipes[2].title %></h4>
-          <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
-        </div>
+        <a href="/recipes/<%= ctx.stash.recipes[1].recipe_id %>" target="_self" style="text-decoration: none;">
+          <div style="flex: 1; border: 2px solid #8B0000; border-radius: 12px; padding: 0.5rem;">
+            <h4 style="color: #8B0000; margin: 0 0 0.3rem 0;">Top 2 <%= ctx.stash.recipes[1].title %></h4>
+            <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
+          </div>
+        </a>
+        <a href="/recipes/<%= ctx.stash.recipes[2].recipe_id %>" target="_self" style="text-decoration: none;">
+          <div style="flex: 1; border: 2px solid #8B0000; border-radius: 12px; padding: 0.5rem;">
+            <h4 style="color: #8B0000; margin: 0 0 0.3rem 0;">Top 3 <%= ctx.stash.recipes[2].title %></h4>
+            <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -50,10 +54,12 @@
       <div style="flex-grow: 1;">
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 1fr); gap: 1.2rem; height: 100%;">
           % for (const recipe of ctx.stash.recipes.slice(0,6) || []) {
-            <div style="border: 2px solid #8B0000; border-radius: 12px; padding: 0.8rem; background: #FDF0E6; display: flex; flex-direction: column; justify-content: space-between;">
-              <h4 style="color: #8B0000; margin-top: 0;"><%= recipe.title %></h4>
-              <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
-            </div>
+            <a href="/recipes/<%= ctx.stash.recipes[2].recipe_id %>" target="_self" style="text-decoration: none;">
+              <div style="border: 2px solid #8B0000; border-radius: 12px; padding: 0.8rem; background: #FDF0E6; display: flex; flex-direction: column; justify-content: space-between;">
+                <h4 style="color: #8B0000; margin-top: 0;"><%= recipe.title %></h4>
+                <div style="width: 100%; padding-bottom: 100%; background: #eee; border-radius: 8px;"></div>
+              </div>
+            </a>
           % }
         </div>
       </div>
